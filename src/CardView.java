@@ -1,5 +1,8 @@
 public class CardView {
 
+    public CardView() {
+    }
+
     public static void printOptions(){
         System.out.println("==========================================");
         System.out.println("欢迎来到自动洗牌发牌系统，请输入数字来执行牌局功能");
