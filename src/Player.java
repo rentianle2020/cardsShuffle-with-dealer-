@@ -3,25 +3,10 @@ import java.util.List;
 
 public class Player {
 
-    private String name = "无名玩家";
+    private String name = "匿名玩家";
 
-    private List<Card> hand = new ArrayList<>();
+    private final List<Card> hand = new ArrayList<>();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Card> getHand() {
-        return hand;
-    }
-
-    public void setHand(List<Card> hand) {
-        this.hand = hand;
-    }
 
     public Player() {
     }
@@ -30,8 +15,22 @@ public class Player {
         this.name = name;
     }
 
+    public List<Card> getHand() {
+        return hand;
+    }
+
+    public void drawCard(Card card) {
+        hand.add(card);
+    }
+
+    public void clearHand(){
+        hand.clear();
+    }
+
     @Override
     public String toString() {
-        return name + ":" + hand;
+        return "玩家姓名：" + name + "   玩家手牌：" + hand;
     }
 }
+
+

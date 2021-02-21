@@ -3,8 +3,17 @@ import java.util.Random;
 
 public class Dealer {
 
-    public void shuffle(Deck deck) {
+    private Deck deck;
 
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public void holdDeck(Deck deck){
+        this.deck = deck;
+    }
+
+    public void shuffleDeck() {
         Random random = new Random();
 
         List<Card> cards = deck.getCards();
@@ -17,30 +26,26 @@ public class Dealer {
         }
     }
 
-    public void deal(Deck deck,List<Player> players) {
+    public void dealTo(List<Player> players) {
 
-        List<Card> cards = deck.getCards();
-
-        int restCards = cards.size();
+        int remainingCards = deck.getCards().size();
 
         while (true) {
             for (Player player : players) {
-                player.getHand().add(cards.get(restCards - 1));
-                cards.remove(restCards - 1);
-                restCards--;
-                if (restCards == 0) {
+                Card card = deck.removeTopCard();
+                player.drawCard(card);
+                remainingCards--;
+                if (remainingCards == 0) {
                     return;
                 }
             }
         }
     }
 
-    public void gather(Deck deck, List<Player> players){
-
-        for (Player player : players){
-            deck.getCards().addAll(player.getHand());
-            player.getHand().clear();
+    public void gather(List<Player> players){
+        for(Player player : players){
+            deck.addCards(player.getHand());
+            player.clearHand();
         }
-
     }
 }
