@@ -35,6 +35,5 @@ public class Test {
 
         controller.printDeck();
         controller.printHands();
-
     }
 }
