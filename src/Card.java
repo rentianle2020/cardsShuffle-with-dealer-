@@ -1,15 +1,23 @@
 public class Card {
 
-    private final char suit;
-    private final char rank;
+    private final String suit;
+    private final String rank;
 
-    public Card(char suit, char rank) {
-        this.suit = suit;
-        this.rank = rank;
+    public Card(Suit suit,Rank rank) {
+        this.suit = suit.getAbbr();
+        this.rank = rank.getAbbr();
     }
 
-    @Override
-    public String toString() {
-        return  "" + suit +rank ;
+    public Card(Joker joker){
+        this.suit = "";
+        this.rank = joker.getAbbr();
+    }
+
+    public String getSuit() {
+        return suit;
+    }
+
+    public String getRank() {
+        return rank;
     }
 }

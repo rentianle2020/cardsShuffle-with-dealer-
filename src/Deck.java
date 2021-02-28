@@ -17,17 +17,19 @@ public class Deck {
         return cards;
     }
 
-    public void buildStandard(){
-        char[] suits = {'S', 'H', 'D', 'C'};
-        char[] ranks = {'A', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'};
+    public static Deck buildStandard(){
+        List<Card> cards = new ArrayList<>();
 
-        for (int i = 0; i < 13; i++) {
-            for (int j = 0; j < 4; j++) {
-                cards.add(new Card(suits[j], ranks[i]));
+        for(Suit suit : Suit.values()){
+            for(Rank rank : Rank.values()){
+                Card card = new Card(suit,rank);
+                cards.add(card);
             }
         }
-        cards.add(new Card('B', 'J'));
-        cards.add(new Card('L', 'J'));
+        cards.add(new Card(Joker.BIG_JOKER));
+        cards.add(new Card(Joker.SMALL_JOKER));
+
+        return new Deck(cards);
     }
 
     public Card removeTopCard(){
@@ -40,9 +42,8 @@ public class Deck {
         }
     }
 
-
     @Override
     public String toString() {
-        return "本副牌（顺序排列）：" + cards;
+        return String.valueOf(cards);
     }
 }

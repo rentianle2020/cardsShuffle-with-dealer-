@@ -18,6 +18,10 @@ public class Player {
         return hand;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void drawCard(Card card) {
         hand.add(card);
     }
@@ -26,10 +30,7 @@ public class Player {
         hand.clear();
     }
 
-    @Override
-    public String toString() {
-        return "玩家姓名：" + name + "   玩家手牌：" + hand;
-    }
+
 }
 
 
